@@ -3,14 +3,14 @@ import background from "./assets/rectangle33.png"
 import logo from "./assets/logo.png"
 import email from "./assets/baseline-email.png"
 import phone from "./assets/phone-fill.png"
-import location from "./assets/location.png"
+import locationFooter from "./assets/locationFooter.png"
 import workingHours from "./assets/ion_time.png"
 import navbarImage from "./assets/rectangle9.png"
 import rectangleImage from "./assets/rectangle33.png"
 import { Link } from "react-router-dom";
 import Phone from "./assets/iPhoneSE.png"
 import Email from "./assets/Email.png"
-import Location from "./assets/Location.png"
+import LocationNav from "./assets/LocationNav.png"
 
 
 const ParentLayout = ({children}) => {
@@ -29,7 +29,7 @@ const ParentLayout = ({children}) => {
                   <p className="px-8 text-white">littlelionsjunior@gmail.com</p>
                 </li>
 
-                <li  style={{ backgroundImage: `url(${Location})`, backgroundRepeat: "no-repeat" ,   backgroundSize: "30px"}}>
+                <li  style={{ backgroundImage: `url(${LocationNav})`, backgroundRepeat: "no-repeat" ,   backgroundSize: "30px"}}>
                  <p className="px-8">  Olympic</p> 
                 </li>
               </ul>
@@ -76,7 +76,7 @@ const ParentLayout = ({children}) => {
         <div className="grid-cols-1 px-32">
           <h2 className="text-2xl font-normal -mt-24" style={{ fontFamily: "Rubik"}}>CONTACT INFO </h2>
           <div className="flex items-center space-x-2 my-2 py-4">
-          <img src={location} alt="" className="h-8" />
+          <img src={locationFooter} alt="" className="h-8" />
           <span><label htmlFor="">Location</label></span>
           </div>
           <div className="flex items-center space-x-2 my-2 py-4">
