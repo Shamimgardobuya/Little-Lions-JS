@@ -18,48 +18,36 @@ const Statistics = () => {
 
 const api_url = import.meta.env?.VITE_API_URL
 
-  return (
-    <div className="container mx-auto py-8 h-48  justify-items-center mb-8">
-
-
-
+return (
+    <div className="container mx-auto py-8 mb-8">
         <div>
-            <div className="text-white flex items-stretch space-x-60 py-24 h-72 px-24"  style={{ backgroundImage: `url(${backgroundRectangle})`}}>
-                <div>
-
-                    <img src={studentCount} className="h-24 space-y-24" alt="Student" />
-                                <label > 150  </label>
-                                <label > Students  </label>
-
+            <div
+                className="text-white flex flex-col sm:flex-row items-stretch justify-between gap-8 sm:gap-12 md:gap-24 py-12 sm:py-16 md:py-24 px-4 sm:px-8 md:px-24 h-auto"
+                style={{ backgroundImage: `url(${backgroundRectangle})` }}
+            >
+                <div className="flex flex-col items-center">
+                    <img src={studentCount} className="h-16 sm:h-20 md:h-24 mb-2" alt="Student" />
+                    <label className="text-lg md:text-xl font-bold">150</label>
+                    <label className="text-sm md:text-base">Students</label>
                 </div>
-                <div >
-    
-                    <img src={lessons} alt="Kindness"  className="h-24 space-y-24"/>
-                    <label >006</label> 
-                        <label >Lessons</label> 
+                <div className="flex flex-col items-center">
+                    <img src={lessons} alt="Kindness" className="h-16 sm:h-20 md:h-24 mb-2" />
+                    <label className="text-lg md:text-xl font-bold">006</label>
+                    <label className="text-sm md:text-base">Lessons</label>
                 </div>
-
-                <div >
-
-                    <img src={meals} alt="Dedication"  className="h-24 space-y-24"/>
-                                   <label>  928 </label>
-                    <label>  Meals per year </label>
-
+                <div className="flex flex-col items-center">
+                    <img src={meals} alt="Dedication" className="h-16 sm:h-20 md:h-24 mb-2" />
+                    <label className="text-lg md:text-xl font-bold">928</label>
+                    <label className="text-sm md:text-base">Meals per year</label>
                 </div>
-                <div >
-                  
-                    <img src={certified}  className="h-24 space-y-24" />
-                    <label >10</label>
-                    <label >Certified Teachers</label>
+                <div className="flex flex-col items-center">
+                    <img src={certified} className="h-16 sm:h-20 md:h-24 mb-2" alt="Certified" />
+                    <label className="text-lg md:text-xl font-bold">10</label>
+                    <label className="text-sm md:text-base text-center">Certified Teachers</label>
                 </div>
-          
-
-            
             </div>
-
-          
         </div>
     </div>
-  );
+);
 };
 export default Statistics;

@@ -17,39 +17,52 @@ const HomeScreen = () => {
   };
 
 
+
   return (
-
-    <div className="container ">
-    <ParentLayout>
-     
-      <div className="h-136 mb-8  ml-40 -mt-4 w-full" style={{ backgroundImage: `url(${school})`, backgroundRepeat: "no-repeat" , maxWidth: '100%'}}>
-      <div className="py-32 px-12">
-        <p className="py-8 text-4xl font-bold  text-white" style={{ textAlign : "left"}} >About Us</p>
-        <p className="font-weight-500 text-white text-xl " style={{ fontFamily: "Rubik", textAlign: "left"}}>
-        At Little Lion Junior School, we are dedicated <br /> to empowering young minds through innovative <br /> learning and a nurturing community.
-        Our mission is <br />to inspire every student to reach their full potential <br />and thrive in an ever-changing world.
-        </p>
-        <button
-        onClick={handleClick}
-        className="bg-green-900 absolute  left-0  text-white mt-8  w-32 h-8  rounded ml-52"
+    <div className="container px-2 sm:px-4 md:px-8">
+      <ParentLayout>
+        <div
+          className="relative mb-8 w-full h-72 sm:h-96 md:h-136 ml-0 md:ml-40 -mt-4 rounded-lg overflow-hidden"
+          style={{
+            backgroundImage: `url(${school})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            maxWidth: "100%",
+          }}
         >
-        Scroll down
-        </button>
-      </div>
-      </div>
-      <section>
-      <Values />
-      </section>
-      <section>
-      <Statistics />
-      </section>
-      <section>
-      <Staff />
-      </section>
-
-    </ParentLayout>
-     
+          <div className="py-12 sm:py-20 md:py-32 px-4 sm:px-8 md:px-12 bg-black bg-opacity-40 h-full flex flex-col justify-center">
+            <p className="py-4 sm:py-6 text-2xl sm:text-3xl md:text-4xl font-bold text-white text-left">
+              About Us
+            </p>
+            <p
+              className="font-medium text-white text-base sm:text-lg md:text-xl"
+              style={{ fontFamily: "Rubik", textAlign: "left" }}
+            >
+              At Little Lion Junior School, we are dedicated <br className="hidden sm:block" />
+              to empowering young minds through innovative <br className="hidden sm:block" />
+              learning and a nurturing community. Our mission is <br className="hidden sm:block" />
+              to inspire every student to reach their full potential <br className="hidden sm:block" />
+              and thrive in an ever-changing world.
+            </p>
+            <button
+              onClick={handleClick}
+              className="bg-green-900 text-white mt-6 sm:mt-8 w-28 sm:w-32 h-8 rounded self-start ml-0 sm:ml-20 md:ml-52"
+            >
+              Scroll down
+            </button>
+          </div>
+        </div>
+        <section>
+          <Values />
+        </section>
+        <section>
+          <Statistics />
+        </section>
+        <section>
+          <Staff />
+        </section>
+      </ParentLayout>
     </div>
-    );
+  );
 };
 export default HomeScreen;

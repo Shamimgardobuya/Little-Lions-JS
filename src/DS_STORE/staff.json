@@ -1,0 +1,26 @@
+[
+    {
+        "first_name": "Dorice",
+        "last_name": "Nerea",
+        "email": "dorice@gmail.com",
+        "phone": "0721633782",
+        "image_path": "https://res.cloudinary.com/dbmgkmhtf/image/upload/v1749721214/phpWwddyw_gipuu4.png",
+        "role": "Teacher & school account"
+    },
+    {
+        "first_name": "Madam",
+        "last_name": "Susan",
+        "email": "littlelionsjunior@gmail.com",
+        "phone": "0717539365",
+        "image_path": "https://res.cloudinary.com/dbmgkmhtf/image/upload/v1749723923/phpf6lLOX_jtkv4k.png",
+        "role": "PP1 Teacher"
+    },
+    {
+        "first_name": "Owino",
+        "last_name": "Phetos",
+        "email": "littlelionsjuniorhd@gmail.com",
+        "phone": "0721633783",
+        "image_path": "https://res.cloudinary.com/dbmgkmhtf/image/upload/v1749724326/phpfnLZyn_sgol0t.png",
+        "role": "Headteacher"
+    }
+]
