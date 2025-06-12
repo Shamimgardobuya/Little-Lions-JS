@@ -4,23 +4,22 @@ import axios from "axios";
 import { TileLayer, Marker } from "react-leaflet";
 import { MapContainer } from "react-leaflet/MapContainer";
 import 'leaflet/dist/leaflet.css';
-
+import { toast } from "react-toastify";
+import LocationMarker from "./assets/locationFooter.png";
 
 const ContactScreen = () => {
     const [name , setName ] = useState(null)
     const [email, setEmail] = useState(null)
     const [subject, setSubject] = useState(null)
     const [message, setMessage] = useState(null) 
-    const [csrfToken, setCsrfToken] = useState(null)
     const center = [-1.3143716,36.7807485]; // Example coordinates
-    
-    useEffect(() => {
-    axios.get("/csrf-token").then((response) => {
-      console.log("CSRF cookie set:", response);
-      setCsrfToken(response.data.token);
-      console.log(">>>>>>>>>CSRF Token:", response.data.token);
+    console.log(center)
+   
+    const showToastMessage = () => {
+    toast.success("Message sent !", {
+      position: "top-right"
     });
-  }, []); 
+    };
     
     const handleNameFunction =  (event) => {
         setName(event.target.value)
@@ -40,10 +39,11 @@ const ContactScreen = () => {
     }
     const handleSubmit = (event)  => {
         console.log(email)
+        console.log("<<<<<<<<<",process.env?.REACT_APP_API_URL);
         event.preventDefault();
         
             axios.post(
-                '/api/send-email',
+                `${process.env?.REACT_APP_API_URL}/api/send-email`,
                 {
                     
                 name : name,
@@ -55,13 +55,15 @@ const ContactScreen = () => {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": csrfToken,
                     }
                 },
                 
             )
             .then(function (response) {
                     console.log(response);
+                    showToastMessage()
+                    
+
                 })
             .catch(function (error) {
                 console.log(error);
@@ -84,9 +86,9 @@ const ContactScreen = () => {
 
       
 
-    <form className="px-88 py-8" onSubmit={handleSubmit} style={{ width: "1155px", height: "807px" , fontFamily: "Rubik"}}>
+    <form className="grid place-items-center " onSubmit={handleSubmit} style={{ fontFamily: "Rubik"}}>
         {/* @csrf (if using Laravel Blade, this should be handled differently in React) */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <div  style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <input type="text" name="name" placeholder="Your Name" onChange={handleNameFunction} style={{ outline: "1px solid darkgreen", border: "none", padding: "8px", borderRadius: "0", margin: "2px" }} />
             <input type="text" name="email" placeholder="Email"  onChange={handleEmailFunction} style={{ outline: "1px solid darkgreen", border: "none", padding: "8px", borderRadius: "0", margin: "2px" }} />
         </div>
@@ -94,9 +96,9 @@ const ContactScreen = () => {
             <input type="text" name="subject" placeholder="Subject"  onChange={handleSubjectFunction} style={{ outline: "1px solid darkgreen", border: "none", padding: "8px", borderRadius: "0", margin: "2px", width: "380px" }} />
         </div>
         <div>
-            <input type="text" name="message" placeholder="Message"  onChange={handleMessageFunction} style={{ outline: "1px solid darkgreen", border: "none", padding: "8px", borderRadius: "0", width: "380px", height: "207px", marginTop: "5px", textAlign: "justify" }} />
+            <textarea type="text" name="message" placeholder="Message"  onChange={handleMessageFunction} style={{ outline: "1px solid darkgreen", border: "none", padding: "8px", borderRadius: "0", width: "380px",  marginBottom: "5px", textAlign: "justify" }} />
         </div>
-        <button type="submit" style={{ backgroundColor: "#013220", color: "white", width: "200px", height: "70px", borderRadius: "64px", fontFamily: "Rubik", fontSize: "18px", fontWeight: "bold", textAlign: "center", marginTop: "8px" }}>
+        <button type="submit" style={{ backgroundColor: "#013220", color: "white", width: "200px", height: "50px", borderRadius: "64px", fontFamily: "Rubik", fontSize: "18px", fontWeight: "bold", textAlign: "center", marginTop: "18px" }}>
             SEND MESSAGE
         </button>
     </form>
@@ -108,9 +110,11 @@ const ContactScreen = () => {
 </div>
         
     
-    <MapContainer center={center} zoom={10} style={{ height: '600px' , marginTop: "-90px" }} className="h-72 -mt-10">
+    <MapContainer center={center} zoom={10} style={{ height: '500px' , marginTop: "60px" }} className="h-72 -mt-10">
            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-           <Marker position={center} />
+           <Marker  position={center}>
+            <img src={LocationMarker} alt="Marker"  width={32} height={32}/>
+            </Marker> 
          </MapContainer>
     </ParentLayout>
     </div>

@@ -12,13 +12,7 @@ import school from "./assets/school_.jpeg"
 
 const HomeScreen = () => {
   const handleClick = () => {
-    // const root = document.getElementById("root")
-    // Inertia.get("/values");
-    // ReactDOM.createRoot(root).render(
-    //   <BrowserRouter
-    //   >
     
-       
     
   };
 
@@ -28,16 +22,16 @@ const HomeScreen = () => {
     <div className="container ">
     <ParentLayout>
      
-      <div className="h-136 mb-8  ml-32 -mt-4 " style={{ backgroundImage: `url(${school})`, backgroundRepeat: "no-repeat" , maxWidth: '100%'}}>
+      <div className="h-136 mb-8  ml-40 -mt-4 w-full" style={{ backgroundImage: `url(${school})`, backgroundRepeat: "no-repeat" , maxWidth: '100%'}}>
       <div className="py-32 px-12">
-        <p className="py-8 text-4xl font-bold justify-items-start text-white">About Us</p>
-        <p className="font-weight-500 text-white text-xl " style={{ fontFamily: "Rubik"}}>
+        <p className="py-8 text-4xl font-bold  text-white" style={{ textAlign : "left"}} >About Us</p>
+        <p className="font-weight-500 text-white text-xl " style={{ fontFamily: "Rubik", textAlign: "left"}}>
         At Little Lion Junior School, we are dedicated <br /> to empowering young minds through innovative <br /> learning and a nurturing community.
         Our mission is <br />to inspire every student to reach their full potential <br />and thrive in an ever-changing world.
         </p>
         <button
         onClick={handleClick}
-        className="bg-green-900 text-white mt-24  w-32 h-8  rounded"
+        className="bg-green-900 absolute  left-0  text-white mt-8  w-32 h-8  rounded ml-52"
         >
         Scroll down
         </button>

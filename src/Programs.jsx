@@ -1,5 +1,5 @@
 import React from "react";
-import programsImage from "./assets/rectangle124.png"
+import programsImage from "./assets/rectangle131.png"
 import activtiesImage from "./assets/group29.png"
 import literacy from "./assets/literacy.png"
 import math from "./assets/bx_math.png"
@@ -14,12 +14,12 @@ import ParentLayout from "./ParentLayout";
 const Programs = () => {
 
     return (
-        <div className="container " style={{ fontFamily: "Rubik" }}>
+        <div  style={{ fontFamily: "Rubik" }}>
             <ParentLayout>
-        <div className=" h-96  mt-24 w-full ml-20" style={{ backgroundImage : `url(${programsImage})`, backgroundRepeat: "no-repeat" }}>
-            <h1 className="text-white  text-2xl " style={{ fontFamily: "Rubik"}}>Learning center for  <br />Your kids</h1>
+        <div className=" h-96  mt-8 w-full ml-20" style={{ backgroundImage : `url(${programsImage})`, backgroundRepeat: "no-repeat" }}>
+            {/* <h1 className="text-white  text-2xl " style={{ fontFamily: "Rubik"}}> </h1> */}
 
-            <p className="text-white" style={{ fontFamily: "Rubik"}}>Welcome to Little Lion Junior School, where we empower <br /> students through a collaborative community and <br /> innovative CBC curriculum for global success.</p>
+            {/* <p className="text-white" style={{ fontFamily: "Rubik"}}>Welcome to Little Lion Junior School, where we empower <br /> students through a collaborative community and <br /> innovative CBC curriculum for global success.</p> */}
 
         
       
@@ -37,7 +37,7 @@ const Programs = () => {
             <p className="text-black" > At Little Lion Junior School, we offer a dynamic CBC curriculum that blends traditional and  <br />innovative learning, empowering students to excel and thrive in a global society.</p>
         </div>
 
-        <div className="ml-24  grid  grid-cols-3 gap-4  ">
+        <div className="ml-24  grid  grid-cols-3 gap-4 items-center " style={{ textAlign : "left"}}>
         
          <div>
             <img className="h-12" src={literacy} alt="" />
@@ -57,7 +57,7 @@ const Programs = () => {
          </div>
         </div>
 
-        <div  className="ml-24 grid  grid-cols-3 gap-4" >
+        <div  className="ml-24 grid  grid-cols-3 gap-4 mt-2" style={{ textAlign : "left"}} >
          
 
         <div>
@@ -70,13 +70,13 @@ const Programs = () => {
          <div>
             <img className="h-12" src={art} alt="" />
             <p>Creative Arts</p>
-            <p>Encourages creativity and  <br />imagination through drawing <br />, music, drama, and other forms <br />of artistic expression.</p>
+            <p>Encourages creativity and  <br />imagination through drawing, <br /> music, drama, and other forms <br />of artistic expression.</p>
          </div>
 
          <div>
             <img className="h-12" src={exercise} alt="" />
             <p> Physical & Health Education (PHE) </p>
-            <p>Promotes physical fitness and <br />healthy living through sports <br />, exercises, and health awareness <br /> activities.</p>
+            <p>Promotes physical fitness and <br />healthy living through sports, <br /> exercises, and health awareness <br /> activities.</p>
          </div>
 
 
