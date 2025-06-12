@@ -10,7 +10,7 @@ const Staff = () => {
        
        
             axios.get(
-                "/staff"
+                `${process.env?.REACT_APP_API_URL}/staff`
             ).then(
                function (response) {
                 setStaff(response.data.data)
