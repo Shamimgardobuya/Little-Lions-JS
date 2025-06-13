@@ -24,18 +24,23 @@ const ContactScreen = () => {
     const handleSubmit = (event)  => {
         event.preventDefault();
         let formData = new FormData(event.target)
-        console.log(formData.get("name"));
 
+        let dataToSend = {
+          service_id : process.env?.REACT_APP_SERVICE_ID,
+          template_id : process.env?.REACT_APP_TEMPLATE_ID,
+          user_id: process.env?.REACT_APP_PUBLIC_KEY,
+          template_params : {
+              name : formData.get("name"),
+              email : formData.get("email"),
+              title: formData.get("subject"),
+              message : formData.get("message"),
+
+          }
+
+        }
             axios.post(
-                `${process.env?.REACT_APP_API_URL}/api/send-email`,
-                {
-                    
-                name : formData.get("name"),
-                email : formData.get("email"),
-                subject : formData.get("subject"),
-                message : formData.get("message")
-
-                },
+                "https://api.emailjs.com/api/v1.0/email/send",
+                dataToSend,
                 
                 {
                     headers: {
