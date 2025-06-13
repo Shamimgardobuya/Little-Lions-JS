@@ -1,0 +1,61 @@
+name: Chat app Node-Js
+
+on:
+  push:
+    branches:
+      - main
+      
+  
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: build assets
+      run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    env:
+        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
+        REACT_APP_PUBLIC_KEY: ${{ secrets.REACT_APP_PUBLIC_KEY}}
+        REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL}}
+        REACT_APP_TEMPLATE_ID: ${{ secrets.REACT_APP_TEMPLATE_ID}}
+        REACT_APP_SERVICE_ID: ${{ secrets.REACT_APP_SERVICE_ID }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Linking project to Vercel
+      run: npx vercel link --yes --project paymentlittle-lions-junior --token=${{ secrets.VERCEL_TOKEN }}
+
+    - name: Deploy to vercel
+      run: npx vercel --yes --prod --token=${{ secrets.VERCEL_TOKEN }}
+      
+
+
+
