@@ -14,7 +14,6 @@ const Staff = () => {
             if (staffJson && staffJson.length > 0) {
                 setLoading(false)
                 setStaff(staffJson)
-                console.log(staffJson);
                 
             }
             else {
@@ -44,7 +43,6 @@ const Staff = () => {
     [])
 
     if (loading) {
-        console.log("rtr", typeof(staff))
     return <p>Loading...</p>;
     }
 
