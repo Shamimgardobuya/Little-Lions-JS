@@ -3,7 +3,7 @@ import './App.css';
 import './index.css'
 import { PaymentForm } from './PaymentForm';
 import HomeScreen from './HomeScreen';
-
+import ParentLayout from './ParentLayout';
 import PaypalScreen from './PaypalScreen';
 import Gallery from './Gallery';
 import ContactScreen from './ContactScreen';
@@ -18,6 +18,7 @@ function App() {
     <div className="App">
       <ToastContainer/>
      <BrowserRouter>
+     <ParentLayout>
      <Routes>
       <Route path='/home' element={<HomeScreen />}></Route>
       <Route path='/paypal' element={<PaypalScreen />}></Route>
@@ -33,6 +34,7 @@ function App() {
 
       
      </Routes>
+      </ParentLayout>
      </BrowserRouter>
      
     </div>

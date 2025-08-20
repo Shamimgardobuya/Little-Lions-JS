@@ -1,10 +1,8 @@
 
 import React from "react";
-import ParentLayout from "./ParentLayout";
 const PaymentCancelled = () => {
 
     return (
-        <ParentLayout>
         <div className="max-w-md rounded overflow-hidden shadow-lg h-96">
   <div className=" py-4  items-center">
     <div className="font-bold text-xl mb-2">Payment Status</div>
@@ -14,7 +12,6 @@ const PaymentCancelled = () => {
   </div>
  
 </div>
-</ParentLayout>
     )
 
 }

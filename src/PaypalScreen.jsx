@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import ParentLayout from "./ParentLayout";
 
 const PAYPAL_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 
@@ -84,7 +83,6 @@ const PaypalScreen = () => {
   }, [amount, selectedItem]);
 
   return (
-  <ParentLayout>
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-auto -mt-8">
       <div className="bg-blue-400 px-4 py-8 text-lg font-semibold text-white-800">
         <h3 className="text-xl font-bold text-white text-center">
@@ -127,7 +125,6 @@ const PaypalScreen = () => {
       </div>
       <div ref={paypalRef} id="paypal-button-container" className="p-4" />
     </div>
-    </ParentLayout>
   );
 };
 

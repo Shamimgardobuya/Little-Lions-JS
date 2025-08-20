@@ -10,13 +10,11 @@ import rect8 from "./assets/rectangle123.png"
 import rect9 from "./assets/rectangle125.png"
 import rect10 from "./assets/rectangle126.png"
 import rect11 from "./assets/rectangle127.png"
-import ParentLayout from "./ParentLayout";
 
 
 const Gallery = () => {
 return (
      <div className="container mx-auto p-4">
-          <ParentLayout>
                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-items-center">
                     <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-gray-200 rounded-lg shadow-lg mb-4">
                          <img src={rect1} alt="" className="w-full h-full object-cover rounded-lg" />
@@ -52,7 +50,6 @@ return (
                          <img src={rect11} alt="" className="w-full h-full object-cover rounded-lg" />
                     </div>
                </div>
-          </ParentLayout>
      </div>
 )
 }

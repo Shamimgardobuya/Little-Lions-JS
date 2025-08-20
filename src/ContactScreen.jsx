@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ParentLayout from "./ParentLayout";
 import axios from "axios";
 import { TileLayer, Marker } from "react-leaflet";
 import { MapContainer } from "react-leaflet/MapContainer";
@@ -64,8 +63,7 @@ const ContactScreen = () => {
     }
     return (
       <div className="min-h-screen bg-white">
-        <ParentLayout>
-         
+
           <div className="flex flex-col items-center px-4 py-8 md:py-12">
             <h1
               className="font-semibold text-xl md:text-2xl mb-2 text-center"
@@ -157,7 +155,6 @@ const ContactScreen = () => {
               />
             </MapContainer>
           </div>
-  </ParentLayout>     
   
   </div>
     );

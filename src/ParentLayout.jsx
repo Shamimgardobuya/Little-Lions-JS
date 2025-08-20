@@ -16,7 +16,7 @@ import LocationNav from "./assets/LocationNav.png"
 const ParentLayout = ({children}) => {
    
     return (
-      <div className="w-full">
+      <div className="w-full" style={{width: '100%'}}>
         {/* Top Contact Bar */}
         <nav
           className="h-16 w-full"
@@ -54,17 +54,17 @@ const ParentLayout = ({children}) => {
                 backgroundPosition: "left center",
               }}
             >
-              <p className="pl-8">Olympic</p>
+              <p className="pl-8">Kibera, Nairobi, Kenya</p>
             </li>
           </ul>
         </nav>
         {/* Main Navigation */}
         <nav>
-          <ul className="flex flex-col sm:flex-row items-center justify-between px-4 py-4 gap-2 sm:gap-6">
+          <ul className="flex flex-col sm:flex-row items-center justify-between px-4 py-2 gap-2 sm:gap-6">
             <li>
               <img
                 src={logo}
-                className="h-14 sm:h-20 w-auto"
+                className="h-12 sm:h-20 w-auto"
                 alt="Logo"
               />
             </li>

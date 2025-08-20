@@ -7,7 +7,6 @@ import environment from "./assets/tree.png"
 import swahili from "./assets/palm-tree.png"
 import art from "./assets/mdi_art.png"
 import exercise from "./assets/exercise.png"
-import ParentLayout from "./ParentLayout";
 
 
 
@@ -15,13 +14,15 @@ const Programs = () => {
 
     return (
         <div style={{ fontFamily: "Rubik" }}>
-            <ParentLayout>
                 <div
                     className="h-64 md:h-96 mt-8 w-full md:ml-20"
                     style={{
                         backgroundImage: `url(${programsImage})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
+                        marginLeft: "-1.8%",
+                        width:'102%'
+                    
                     }}
                 ></div>
 
@@ -110,7 +111,6 @@ const Programs = () => {
                         </p>
                     </div>
                 </div>
-            </ParentLayout>
         </div>
     );
 
