@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './index.css'
-import { PaymentForm } from './PaymentForm';
+// import { PaymentForm } from './PaymentForm';
 import HomeScreen from './HomeScreen';
 import ParentLayout from './ParentLayout';
 import PaypalScreen from './PaypalScreen';
@@ -13,6 +13,7 @@ import PaymentSuccess from './PaymentSuccess';
 import { ToastContainer } from "react-toastify";
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MpesaForm from './MpesaForm';
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
      <Routes>
       <Route path='/home' element={<HomeScreen />}></Route>
       <Route path='/paypal' element={<PaypalScreen />}></Route>
+      <Route path='/mpesa' element={<MpesaForm />}></Route>
       <Route path='/contact' element={<ContactScreen />}></Route>
       <Route path='/gallery' element={<Gallery />}></Route>
       <Route path='/programs' element={<Programs />}></Route>

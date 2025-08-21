@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 import Phone from "./assets/iPhoneSE.png"
 import Email from "./assets/Email.png"
 import LocationNav from "./assets/LocationNav.png"
-
+import 'reactjs-popup/dist/index.css'
+import Popup from "reactjs-popup";
 
 const ParentLayout = ({children}) => {
    
@@ -81,12 +82,23 @@ const ParentLayout = ({children}) => {
               <Link to="/contact">Contact us</Link>
             </li>
             <li style={{ fontFamily: "Rubik" }}>
+              <Popup trigger={<button className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Donate</button>}>
+                <div>
               <Link
                 to="/paypal"
-                className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               >
-                Donate
+                Paypal
               </Link>
+              </div>
+              <div>
+              <Link
+                to="/mpesa"
+              >
+                Mpesa
+              </Link>
+                </div>
+              </Popup>
+
             </li>
           </ul>
         </nav>
@@ -179,7 +191,7 @@ const ParentLayout = ({children}) => {
                     <Link to="/contact">Contact Us</Link>
                   </li>
                   <li className="py-2" style={{ fontFamily: "Rubik" }}>
-                    <Link to="/paypal">Donate</Link>
+                    <Link to="/paypal" >Donate</Link>
                   </li>
                   <li className="py-2" style={{ fontFamily: "Rubik" }}>
                     <Link to="/programs">Programs</Link>
