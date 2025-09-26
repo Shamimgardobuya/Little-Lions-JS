@@ -1,47 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ParentLayout from "./ParentLayout";
 import axios from "axios";
 import staffJson from "./DS_STORE/staff.json";
+import lodash from "lodash";
+import rect from "./assets/Rectangle_43.png";
+import cfk_donor from "./assets/cfk_don.png";
+import ando from "./assets/ando_don.png";
+import good from  "./assets/good_don.png";
+import  daraja from  "./assets/daraja_don.png";
+import saidika from "./assets/saidika_don.png";
+
 
 
 const Staff = () => {
+    // const [ data, setData ] = useState(null)
     const [staff, setStaff] =  useState(null)
     const [loading, setLoading ] = useState(true) //while data is being fetched 
     const  [error, setError ] = useState(null)
+    const  [mydata, setMydata ] = useState([])
+    let check = JSON.parse(localStorage.getItem('staff'))
+    console.log("chec", check)
+    const date = new Date();
 
-    useEffect( ()=> { // use effect with empty dependen aarray request is only made once when compononet mounts 
-            console.log(typeof(staff))
-            if (staffJson && staffJson.length > 0) {
-                setLoading(false)
-                setStaff(staffJson)
+    const formatter = new Intl.DateTimeFormat('en-US', {timeZone:   `${process.env.REACT_APP_TIMEZONE}`});
+    const formattedDate = formatter.format(date);
+    const [ invalidateCache , setInvalidateCache ] = useState(false)
+    const fetchData = async () =>    {
+        try {
+             const headers = {
+                    'Accept' : 'application/json'
+                }
                 
+                let response = await axios.get(
+                `${process.env?.REACT_APP_API_URL}/api/staff`,
+                {headers},
+                {withCredentials: true}
+
+                )
+                // console.log(response)l
+                if (check.length > 0) {
+                    console.log("present")
+                    setMydata(response.data.data)
+                    setStaff(check)
+                    setLoading(false)
+
+
+                }
+                if(!lodash.isEqual(response.data.data, JSON.parse(localStorage.getItem('staff')))) {
+                    setInvalidateCache(true)
+                    let data = localStorage.setItem('staff', JSON.stringify(response.data.data))
+                    setStaff(data)
+                    setLoading(false)
+
+                }
+        } catch (error) {
+            setError(error)
+            console.error('Error fetching data:', error);
+        }
             }
-            else {
-                
-                 axios.get(
-                `${process.env?.REACT_APP_API_URL}/api/staff`
-            ).then(
-               function (response) {
-
-                setStaff(response.data.data)
-                setLoading(false)
-
-                console.log(response.data)
-
-               }
-            ).catch(error => {
-                setError(error)
-                console.error('Error fetching data:', error);
-            });
-
-            }
+    useEffect( ()=> { 
+        fetchData()
         
-
-
     },
    
-    [])
-
+    [ invalidateCache ])
     if (loading) {
     return <p>Loading...</p>;
     }
@@ -76,6 +98,18 @@ const Staff = () => {
                         :
                         <p className="text-red-500">No staff data available</p>
                 }
+
+                <img src={rect} className="p-y-4" alt="no image" />
+            </div>
+
+            <div className="flex flex-wrap gap-12 p-8 sm:p-4 justify-center items-center">
+               <img src={good}  className="h-16 sm:h-20 md:h-24 mb-2" alt="" />
+               <img src={ando}  className="h-16 sm:h-20 md:h-24 mb-2" alt="" />
+               <img src={saidika} className="h-16 sm:h-20 md:h-24 mb-2"  alt="" />
+               <img src={daraja} className="h-16 sm:h-20 md:h-24 mb-2" alt="" />
+               <img src={cfk_donor} className="h-16 sm:h-20 md:h-24 mb-2" alt="" />
+
+
             </div>
         </div>
     )
