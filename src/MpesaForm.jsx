@@ -31,6 +31,10 @@ const MpesaForm = () => {
                     "amount": amount,
                     "item": selectedItem
                 },
+                  {
+                     withCredentials: true,
+                  },
+
                 {
                     headers: {
                         "Content-Type" : "application/json"
@@ -38,8 +42,9 @@ const MpesaForm = () => {
                 }
             )
 
-            toast.success("Payment made successfull! Thank you for making Little lions better")
+            toast.success("Payment made successfully! Thank you for making Little lions better")
         } catch (error) {  
+          console.log(error);
             toast.error(error.response.data.message);
             
         }

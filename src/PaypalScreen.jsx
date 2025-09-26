@@ -53,6 +53,8 @@ const PaypalScreen = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ amount, item: selectedItem }),
+                credentials: "include",
+
               });
               const order = await response.json();
               return order.id;
@@ -65,6 +67,7 @@ const PaypalScreen = () => {
                   order_id: data.orderID,
                   item: selectedItem,
                 }),
+                credentials: "include"
               });
               const details = await response.json();
               if (details.status === "INSTRUMENT_DECLINED") {
