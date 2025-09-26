@@ -38,7 +38,7 @@ const Staff = () => {
 
                 )
                 // console.log(response)l
-                if (check.length > 0) {
+                if (check?.length > 0) {
                     console.log("present")
                     setMydata(response.data.data)
                     setStaff(check)
@@ -64,6 +64,7 @@ const Staff = () => {
     },
    
     [ invalidateCache ])
+    console.log("tatoo", mydata)
     if (loading) {
     return <p>Loading...</p>;
     }
