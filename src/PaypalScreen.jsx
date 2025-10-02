@@ -48,27 +48,31 @@ const PaypalScreen = () => {
               label: "",
             },
             createOrder: async () => {
-              console.log(process.env?.REACT_APP_API_URL)
-              const response = await fetch(`${process.env?.REACT_APP_API_URL}/api/handle-payment`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount, item: selectedItem }),
-                credentials: "include",
-
-              });
+              const response = await fetch(
+                `${process.env?.REACT_APP_API_URL}/api/handle-payment`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ amount, item: selectedItem }),
+                  credentials: "include",
+                }
+              );
               const order = await response.json();
               return order.id;
             },
             onApprove: async (data) => {
-              const response = await fetch(`${process.env?.REACT_APP_API_URL}/api/payment-success`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  order_id: data.orderID,
-                  item: selectedItem,
-                }),
-                credentials: "include"
-              });
+              const response = await fetch(
+                `${process.env?.REACT_APP_API_URL}/api/payment-success`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    order_id: data.orderID,
+                    item: selectedItem,
+                  }),
+                  credentials: "include",
+                }
+              );
               const details = await response.json();
               if (details.status === "INSTRUMENT_DECLINED") {
                 alert("Payment failed!");
@@ -86,47 +90,67 @@ const PaypalScreen = () => {
   }, [amount, selectedItem]);
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-auto -mt-8">
-      <div className="bg-blue-400 px-4 py-8 text-lg font-semibold text-white-800">
-        <h3 className="text-xl font-bold text-white text-center">
-          Your Gift goes Twice as far
-        </h3>
+    <div className="flex justify-center items-start gap-6 mt-8">
+      {/* Left: PayPal card */}
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="bg-blue-400 px-4 py-8 text-lg font-semibold text-white-800">
+          <h3 className="text-xl font-bold text-white text-center">
+            Your Gift goes Twice as far
+          </h3>
+        </div>
+
+        {/* Custom Amount */}
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder="Enter custom amount"
+          className="border border-gray-300 p-2 m-2 ml-16 outline-none"
+        />
+
+        {/* Donation Amounts */}
+        <div className="grid grid-cols-3 gap-3 justify-center bg-white">
+          {donationAmounts.map((amt) => (
+            <button
+              key={amt}
+              className="bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 m-4"
+              onClick={() => setAmount(amt)}
+            >
+              ${amt}
+            </button>
+          ))}
+        </div>
+
+        {/* Payment Items */}
+        <div className="grid grid-cols-3 gap-3 justify-center bg-white">
+          {paymentItems.map((item, idx) => (
+            <button
+              key={item}
+              className={`bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 m-4 rounded-full ${
+                selectedItemIndex === idx ? "bg-orange-400" : ""
+              }`}
+              onClick={() => {
+                setSelectedItem(item);
+                setSelectedItemIndex(idx);
+              }}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+
+        {/* PayPal Button */}
+        <div ref={paypalRef} id="paypal-button-container" className="p-4" />
       </div>
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        placeholder="Enter custom amount"
-        className="border border-gray-300 p-2 m-2 ml-16 outline-none"
-      />
-      <div className="grid grid-cols-3 gap-3 justify-center bg-white">
-        {donationAmounts.map((amt) => (
-          <button
-            key={amt}
-            className="bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 m-4"
-            onClick={() => setAmount(amt)}
-          >
-            ${amt}
-          </button>
-        ))}
+
+      {/* Right: Info card */}
+      <div className="max-w-xs bg-white rounded-xl shadow-md p-6 border border-gray-200">
+        <h3 className="text-lg font-bold text-red-500 mb-2">Important</h3>
+        <p className="text-gray-700">
+          Please select a <span className="font-semibold">payment item</span>{" "}
+          in order to proceed with your donation.
+        </p>
       </div>
-      <div className="grid grid-cols-3 gap-3 justify-center bg-white">
-        {paymentItems.map((item, idx) => (
-          <button
-            key={item}
-            className={`bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 m-4 rounded-full ${
-              selectedItemIndex === idx ? "bg-orange-400" : ""
-            }`}
-            onClick={() => {
-              setSelectedItem(item);
-              setSelectedItemIndex(idx);
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-      <div ref={paypalRef} id="paypal-button-container" className="p-4" />
     </div>
   );
 };
