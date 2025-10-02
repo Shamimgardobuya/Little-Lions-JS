@@ -91,11 +91,7 @@ const ParentLayout = ({children}) => {
               </Link>
               </div>
               <div>
-              <Link
-                to="/mpesa"
-              >
-                Mpesa
-              </Link>
+      
                 </div>
               </Popup>
 
