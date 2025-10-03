@@ -90,9 +90,9 @@ const PaypalScreen = () => {
   }, [amount, selectedItem]);
 
   return (
-    <div className="flex justify-center items-start gap-6 mt-8">
+    <div className="flex flex-col md:flex-row justify-center items-start gap-6 mt-8 px-4">
       {/* Left: PayPal card */}
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="w-full md:max-w-sm rounded overflow-hidden shadow-lg">
         <div className="bg-blue-400 px-4 py-8 text-lg font-semibold text-white-800">
           <h3 className="text-xl font-bold text-white text-center">
             Your Gift goes Twice as far
@@ -105,15 +105,15 @@ const PaypalScreen = () => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder="Enter custom amount"
-          className="border border-gray-300 p-2 m-2 ml-16 outline-none"
+          className="border border-gray-300 p-2 m-2 w-[80%] mx-auto outline-none block"
         />
 
         {/* Donation Amounts */}
-        <div className="grid grid-cols-3 gap-3 justify-center bg-white">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 justify-center bg-white p-2">
           {donationAmounts.map((amt) => (
             <button
               key={amt}
-              className="bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 m-4"
+              className="bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 rounded m-2 w-full"
               onClick={() => setAmount(amt)}
             >
               ${amt}
@@ -122,11 +122,11 @@ const PaypalScreen = () => {
         </div>
 
         {/* Payment Items */}
-        <div className="grid grid-cols-3 gap-3 justify-center bg-white">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 justify-center bg-white p-2">
           {paymentItems.map((item, idx) => (
             <button
               key={item}
-              className={`bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 m-4 rounded-full ${
+              className={`bg-gray-200 hover:bg-orange-400 text-black font-bold py-2 px-4 rounded-full m-2 w-full ${
                 selectedItemIndex === idx ? "bg-orange-400" : ""
               }`}
               onClick={() => {
@@ -144,7 +144,7 @@ const PaypalScreen = () => {
       </div>
 
       {/* Right: Info card */}
-      <div className="max-w-xs bg-white rounded-xl shadow-md p-6 border border-gray-200">
+      <div className="w-full md:max-w-xs bg-white rounded-xl shadow-md p-6 border border-gray-200">
         <h3 className="text-lg font-bold text-red-500 mb-2">Important</h3>
         <p className="text-gray-700">
           Please select a <span className="font-semibold">payment item</span>{" "}
