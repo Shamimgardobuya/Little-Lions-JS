@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const PAYPAL_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 
@@ -143,14 +144,24 @@ const PaypalScreen = () => {
         <div ref={paypalRef} id="paypal-button-container" className="p-4" />
       </div>
 
-      {/* Right: Info card */}
-      <div className="w-full md:max-w-xs bg-white rounded-xl shadow-md p-6 border border-gray-200">
+      {/* Right: Info card with animation */}
+  <AnimatePresence>
+    {!selectedItem && (
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 50 }}
+        transition={{ duration: 0.4 }}
+        className="w-full md:max-w-xs bg-white rounded-xl shadow-md p-6 border border-gray-200"
+      >
         <h3 className="text-lg font-bold text-red-500 mb-2">Important</h3>
         <p className="text-gray-700">
           Please select a <span className="font-semibold">payment item</span>{" "}
           in order to proceed with your donation.
         </p>
-      </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
     </div>
   );
 };
